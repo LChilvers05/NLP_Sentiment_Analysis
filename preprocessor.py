@@ -25,10 +25,12 @@ class MyPreprocessor:
 
         return reviews
     
+    
     def __add_to_vocabulary(self, reviews):
         # get all the terms across all the reviews
         for review in reviews:
             for term in review: self.vocab.add(term)
+
 
     def __tokenise(self, reviews, is_punctuation_removed, is_stopwords_removed, is_lowercase):
         tokenised_reviews = []
@@ -52,6 +54,7 @@ class MyPreprocessor:
             tokenised_reviews.append(tokenised_review)
         
         return tokenised_reviews
+    
                         
     def __lemmatise(self, reviews):
         lemmatised_reviews = []
@@ -63,6 +66,7 @@ class MyPreprocessor:
         
         return lemmatised_reviews
     
+    
     def __stem(self, reviews):
         stemmed_reviews = []
         # do stemming on tokenised reviews
@@ -72,6 +76,7 @@ class MyPreprocessor:
             stemmed_reviews.append([stemmer.stem(token) for token in review])
         
         return stemmed_reviews
+    
     
     def __n_gram(self, reviews, n):
         # default to 1 if not valid length

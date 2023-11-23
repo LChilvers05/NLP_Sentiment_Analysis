@@ -28,6 +28,7 @@ class MyFeatureGenerator:
             features = self.__ppmi()
             
         return features
+    
 
     def __collect_terms(self, reviews):
         self.term_counts = []
@@ -36,6 +37,7 @@ class MyFeatureGenerator:
             self.term_counts.append(Counter(review))
 
         # TODO: create a count graph of features
+
     
     def __tf_idf(self):
 
@@ -48,9 +50,9 @@ class MyFeatureGenerator:
             return math.log(float(review_count)/float(review_with_term_count + 1), 10)
 
         # is [(term1)[tf1, tf2, ...], (term2)[tf1, tf2, ...], ...]
-        tf = np.empty((len(self.vocab), len(self.term_counts)))
+        tf = np.zeros((len(self.vocab), len(self.term_counts)))
         # is [(term1)[idf1], (term2)[idf2], ...]
-        idf = np.empty((len(self.vocab), 1))
+        idf = np.zeros((len(self.vocab), 1))
 
         for i, term in enumerate(self.vocab):
             review_with_term_count = 0
@@ -66,12 +68,15 @@ class MyFeatureGenerator:
 
         return vectors
     
+    
     def __freq_norm(self):
         return
+    
     
     def __ppmi(self):
         return
     
+   
     
 class NormTech(Enum):
     TF_IDF = 1

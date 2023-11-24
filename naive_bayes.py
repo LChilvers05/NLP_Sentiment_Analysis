@@ -17,7 +17,7 @@ class MyNaiveBayesClassifier:
         predictions = []
 
         for vector in x_data:
-            prediction = self.prior_probs
+            prediction = self.prior_probs.copy()
 
             for i, feature in enumerate(vector):
                 if feature == 0.0: continue
@@ -35,7 +35,7 @@ class MyNaiveBayesClassifier:
         prior_probs = np.zeros(max(labels) + 1)
         for label in labels:
             prior_probs[label] += 1/len(labels)
-        prior_probs = map(np.log, prior_probs)
+        prior_probs = list(map(np.log, prior_probs))
 
         return prior_probs
     
@@ -66,8 +66,4 @@ class MyNaiveBayesClassifier:
         if len(self.prior_probs) == 0:
             self.__set_prior_probs(labels)
         return len(self.prior_probs)
-    
-    
-        
-    
-    
+      

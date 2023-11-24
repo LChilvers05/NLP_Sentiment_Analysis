@@ -82,3 +82,4 @@ class NormTech(Enum):
     TF_IDF = 1
     FREQ_NORM = 2
     PPMI = 3
+    

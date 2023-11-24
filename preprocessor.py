@@ -84,3 +84,4 @@ class MyPreprocessor:
         # generate n-gram on processed reviews where
         # a review is ['a', 'list', 'of', 'words']
         return [list(nltk.ngrams(review, n)) for review in reviews]
+    

@@ -8,13 +8,11 @@ from enum import Enum
 
 class MyFeatureGenerator:
 
-    # set(('all',), ('n-grams',), ('found',), ...)
-    vocab = set()
-    # [{term1: 0, ...}, {term1: 2, ...}, ...]
-    term_counts = []
-
     def __init__(self, vocab):
+        # set(('all',), ('n-grams',), ('found',), ...)
         self.vocab = vocab
+        # [{term1: 0, ...}, {term1: 2, ...}, ...]
+        self.term_counts = []
     
     def generate_features(self, reviews, normalisation_technique):
         # reviews is [[('this', 'is', 'a'), ('is', 'a', 'review'), ('a', 'review', None)]]

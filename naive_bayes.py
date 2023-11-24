@@ -1,9 +1,11 @@
 import numpy as np
 
 class MyNaiveBayesClassifier:
-    
-    prior_probs = [] # [p(pos), p(neg), p(neu)]
-    feature_probs = []
+
+    def __init__(self):
+        self.prior_probs = [] # [p(pos), p(neg), p(neu)]
+        self.feature_probs = []
+        
 
     def fit(self, x_data, y_data):
         self.prior_probs = self.__set_prior_probs(y_data)

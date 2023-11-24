@@ -3,7 +3,9 @@ from nltk.corpus import stopwords
 
 class MyPreprocessor:
 
-    vocab = set()
+    def __init__(self):
+        self.vocab = set()
+        
 
     def preprocess(self, reviews, 
                          is_lemmatisation = True, 

@@ -22,6 +22,8 @@ class MyFeatureGenerator:
             return self.__freq_norm()
         elif (normalisation_technique == NormTech.PPMI):
             return self.__ppmi(reviews)
+        elif (normalisation_technique == NormTech.ONE_HOT):
+            return self.__one_hot()
     
 
     def __collect_terms(self, reviews):
@@ -135,8 +137,15 @@ class MyFeatureGenerator:
         return vectors
 
     
+    def __one_hot(self):
+        one_hots = [[1 if term in term_count else 0 for term in self.vocab] for term_count in self.term_counts]
+
+        return one_hots
+
+
 class NormTech(Enum):
     TF_IDF = 1
     FREQ_NORM = 2
     PPMI = 3
+    ONE_HOT = 4
     

@@ -11,7 +11,7 @@ class MyPreprocessor:
                          is_lemmatisation = True, 
                          is_lowercase = True, 
                          is_stopwords_removed = True,
-                         is_punctuation_removed = False, 
+                         is_punctuation_removed = True, 
                          n_gram_len = 1
                          ):
         # tokenise each review: ['this', 'is', 'a', 'review']

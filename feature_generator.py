@@ -32,8 +32,6 @@ class MyFeatureGenerator:
             # get the count of every term in each review
             self.term_counts.append(Counter(review))
 
-        # TODO: create a count graph of features
-
     
     def __tf_idf(self):
 

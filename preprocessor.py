@@ -20,6 +20,9 @@ class MyPreprocessor:
         # do lemmatisation or stemming: ['this', 'is', 'a', 'review']
         reviews = self.__lemmatise(reviews) if is_lemmatisation else self.__stem(reviews)
 
+        # remove 'br' from ['a', 'review', ...]
+        reviews = self.__clean(reviews)
+
         # generate n_grams: [[('this', 'is', 'a'), ('is', 'a', 'review'), ('a', 'review', None)], [...]]
         reviews = self.__n_gram(reviews, n_gram_len)
 
@@ -86,4 +89,7 @@ class MyPreprocessor:
         # generate n-gram on processed reviews where
         # a review is ['a', 'list', 'of', 'words']
         return [list(nltk.ngrams(review, n)) for review in reviews]
+    
+    def __clean(self, reviews):
+        return [[token for token in review if token != 'br'] for review in reviews]
     

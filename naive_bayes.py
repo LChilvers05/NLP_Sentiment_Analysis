@@ -3,7 +3,7 @@ import numpy as np
 class MyNaiveBayesClassifier:
 
     def __init__(self):
-        self.prior_probs = [] # [p(pos), p(neg), p(neu)]
+        self.prior_probs = [] # [p(pos), p(neg)]
         self.feature_probs = []
         
 
@@ -53,10 +53,14 @@ class MyNaiveBayesClassifier:
             for j, feature in enumerate(vector):
                 feature_probs[labels[i]][j] += feature
 
-        # feature_probs is 
+        # feature_probs is [
+        # (pos)[log(p(f1 | pos)), log(p(f2 | pos)), ...], 
+        # (neg)[log(p(f1 | neg)), log(p(f2 | neg)), ...]
+        # ]
         for i, class_features in enumerate(feature_probs):
             class_sum = np.sum(class_features)
-            d = class_sum + (feature_count * alpha)
+            # alpha for laplace smoothing
+            d = class_sum + (feature_count * alpha) 
             for j, class_feature in enumerate(class_features):
                 n = class_feature + alpha
                 feature_probs[i][j] = np.log(n/d)

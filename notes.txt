@@ -1,9 +1,0 @@
-Notes
-
-1) Need to perform hyperparameter optimisation on Logistic Regression and SVM. 
-    • ONLY on the feature set that performs best
-    • 5 combinations for each one
-
-2) May or may not need 1 Hot embeddings
-
-3) Can use SGD or Logistic Regression. 
